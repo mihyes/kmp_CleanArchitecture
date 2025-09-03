@@ -1,0 +1,24 @@
+CREATE TABLE User (
+    id INTEGER NOT NULL PRIMARY KEY,
+    name TEXT NOT NULL,
+    version TEXT NOT NULL,
+    platform TEXT NOT NULL
+);
+
+getAllUsers:
+SELECT * FROM User ORDER BY id DESC;
+
+getUserById:
+SELECT * FROM User WHERE id = ?;
+
+insertUser:
+INSERT OR REPLACE INTO User(id, name, version, platform) VALUES (?, ?, ?, ?);
+
+updateUser:
+UPDATE User SET name = ?, version = ?, platform = ? WHERE id = ?;
+
+deleteUser:
+DELETE FROM User WHERE id = ?;
+
+deleteAllUsers:
+DELETE FROM User;
