@@ -8,7 +8,7 @@ import io.ktor.client.call.*
 import io.ktor.client.request.*
 import io.ktor.http.*
 
-
+// HttpClient 사용하여 API 통신하는 부분
 class UserApiImpl(
     private val httpClient: HttpClient,
     private val baseUrl: String = "https://api.example.com"
@@ -20,10 +20,6 @@ class UserApiImpl(
 
     override suspend fun getUserById(id: Long): UserDto {
         return httpClient.get("$baseUrl/id/$id").body()
-    }
-
-    override suspend fun getUserByName(name: String): UserDto {
-        return httpClient.get("$baseUrl/name/$name").body()
     }
 
     override suspend fun createUser(request: CreateUserRequest): UserDto {

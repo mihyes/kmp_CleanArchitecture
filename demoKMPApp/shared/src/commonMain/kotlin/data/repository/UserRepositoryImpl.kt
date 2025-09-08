@@ -16,9 +16,10 @@ import kotlinx.datetime.Instant
 
 
 
-// Repository 패턴 구현
-
-
+/**
+ * ✅ Repository에서 API 호출과 로컬 저장을 조합
+ * 네이티브 앱은 이 Repository Interface만 알면 됨
+ */
 class UserRepositoryImpl(
     private val userApi: UserApi,
     private val userDao: UserDao

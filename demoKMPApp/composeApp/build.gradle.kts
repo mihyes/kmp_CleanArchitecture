@@ -7,6 +7,8 @@ plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.composeMultiplatform)
     alias(libs.plugins.composeCompiler)
+
+
 }
 
 kotlin {
@@ -39,6 +41,18 @@ kotlin {
         androidMain.dependencies {
             implementation(compose.preview)
             implementation(libs.androidx.activity.compose)
+
+            implementation("io.insert-koin:koin-android:3.5.0")
+            implementation("io.insert-koin:koin-androidx-compose:3.5.0")
+            implementation("io.insert-koin:koin-androidx-workmanager:3.5.0")
+
+            // Lifecycle
+            implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.6.2")
+            implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.2")
+            implementation("androidx.lifecycle:lifecycle-runtime-compose:2.6.2")
+
+            implementation("androidx.activity:activity-ktx:1.8.0")
+            implementation("androidx.fragment:fragment-ktx:1.6.2")
         }
         commonMain.dependencies {
             implementation(compose.runtime)
@@ -50,6 +64,8 @@ kotlin {
             implementation(libs.androidx.lifecycle.viewmodelCompose)
             implementation(libs.androidx.lifecycle.runtimeCompose)
             implementation(projects.shared)
+            implementation("io.insert-koin:koin-core:3.5.0")
+
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
@@ -87,4 +103,5 @@ android {
 dependencies {
     debugImplementation(compose.uiTooling)
 }
+
 

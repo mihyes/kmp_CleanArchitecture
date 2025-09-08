@@ -19,3 +19,14 @@ This is a Kotlin Multiplatform project targeting Android, iOS, Web, Server.
 
 
 Learn more about [Kotlin Multiplatform](https://www.jetbrains.com/help/kotlin-multiplatform-dev/get-started.html)…
+
+
+
+ // 클린 아키텍처 구조
+📱 Android/iOS (Presentation Layer)
+↓ (ViewModel/Presenter를 통해 UseCase 호출)
+🎭 Domain Layer (UseCase)
+↓ (Repository Interface를 통해 데이터 요청)
+📦 Data Layer (Repository Implementation)
+↓ (API 호출은 여기서만 발생)
+🌐 Network Layer (HttpClient)
