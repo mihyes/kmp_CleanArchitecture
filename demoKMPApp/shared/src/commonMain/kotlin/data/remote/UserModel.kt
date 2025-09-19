@@ -13,6 +13,20 @@ data class UserDto(
 )
 
 
+
+@Serializable
+data class MaintenanceResponse(
+    val status: Long,
+    val message: String,
+    val details: String,
+    val maintenanceStart: String,
+    val maintenanceEnd: String,
+    val documentation: String?
+)
+
+
+
+
 // 예시
 @Serializable
 data class CreateUserRequest(

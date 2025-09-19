@@ -7,8 +7,8 @@ plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.composeMultiplatform)
     alias(libs.plugins.composeCompiler)
-
-
+    kotlin("kapt")
+    alias(libs.plugins.hilt)
 }
 
 kotlin {
@@ -42,9 +42,8 @@ kotlin {
             implementation(compose.preview)
             implementation(libs.androidx.activity.compose)
 
-            implementation("io.insert-koin:koin-android:3.5.0")
-            implementation("io.insert-koin:koin-androidx-compose:3.5.0")
-            implementation("io.insert-koin:koin-androidx-workmanager:3.5.0")
+            implementation("com.google.dagger:hilt-android:2.56.2")
+            implementation("androidx.hilt:hilt-navigation-compose:1.1.0")
 
             // Lifecycle
             implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.6.2")
@@ -53,6 +52,13 @@ kotlin {
 
             implementation("androidx.activity:activity-ktx:1.8.0")
             implementation("androidx.fragment:fragment-ktx:1.6.2")
+
+            // Sqldelight
+            implementation("app.cash.sqldelight:android-driver:2.1.0")
+            implementation("app.cash.sqldelight:coroutines-extensions:2.1.0")
+
+
+
         }
         commonMain.dependencies {
             implementation(compose.runtime)
@@ -64,7 +70,7 @@ kotlin {
             implementation(libs.androidx.lifecycle.viewmodelCompose)
             implementation(libs.androidx.lifecycle.runtimeCompose)
             implementation(projects.shared)
-            implementation("io.insert-koin:koin-core:3.5.0")
+
 
         }
         commonTest.dependencies {
@@ -102,6 +108,11 @@ android {
 
 dependencies {
     debugImplementation(compose.uiTooling)
+    configurations.getByName("kapt").dependencies.add(
+        project.dependencies.create("com.google.dagger:hilt-android-compiler:2.56.2")
+    )
 }
 
-
+kapt {
+    correctErrorTypes = true
+}

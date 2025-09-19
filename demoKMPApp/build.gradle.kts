@@ -9,5 +9,6 @@ plugins {
     alias(libs.plugins.kotlinMultiplatform) apply false
     alias(libs.plugins.sqlDelight) apply false
     kotlin("plugin.serialization") version "1.9.20" apply false
+    id("com.google.dagger.hilt.android") version "2.56.2" apply false
 }
 

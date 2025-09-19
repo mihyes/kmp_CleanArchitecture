@@ -147,8 +147,6 @@ class DIContainer {
     }
 
 
-
-
     /**
      * UserPresenter 제공
      * iOS ViewModel에서 이것을 사용
@@ -156,7 +154,7 @@ class DIContainer {
 
     fun getUserPresenter(): UserPresenter {
         return UserPresenter(
-            getUsersUseCase,
+            getUserUseCase = getUsersUseCase,
             createUserUseCase = createUserUseCase,
             refreshUserUseCase = refreshUsersUseCase,
             createUserLocallyUseCase = createUserLocallyUseCase,
@@ -185,6 +183,7 @@ class DIContainer {
      * 디버깅용 - 데이터베이스 직접 접근
      */
     fun getDatabase(): Database = database
+    fun getUserDao(): UserDao = userDao
 
 
     /**

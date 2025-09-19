@@ -59,7 +59,6 @@ kotlin {
             implementation("io.ktor:ktor-client-logging:2.3.8")
 
             // 데이터베이스 (SQLDelight)
-//            implementation(libs.sqldelight.coroutines)
             implementation("app.cash.sqldelight:runtime:2.1.0")
             implementation("app.cash.sqldelight:coroutines-extensions:2.1.0")
 
@@ -67,7 +66,7 @@ kotlin {
             implementation("me.tatarka.inject:kotlin-inject-runtime-kmp:0.8.0")
 
             // firebase
-            implementation("dev.gitlive:firebase-analytics:2.1.0")
+//            implementation("dev.gitlive:firebase-analytics:2.1.0")
 //            implementation("dev.gitlive:firebase-crashlytics:2.1.0") // web은 지원이 안되는 상황
 
             // Kotlinx Serialization
@@ -86,21 +85,20 @@ kotlin {
         }
 
         androidMain.dependencies {
-
             // ✅ Android용 Ktor 엔진
-//            implementation("io.ktor:ktor-client-android:2.3.8")
             implementation("io.ktor:ktor-client-okhttp:2.3.8")
 
             // ✅ SQLDelight Android 드라이버
             implementation("app.cash.sqldelight:android-driver:2.1.0")
 
-
-
-            implementation("me.tatarka.inject:kotlin-inject-runtime-kmp:0.8.0")
-//            implementation(libs.sqldelight.android)
+            // lifecycle
+            implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.6.2")
+            implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.2")
+            implementation("androidx.lifecycle:lifecycle-runtime-compose:2.6.2")
+//            implementation("me.tatarka.inject:kotlin-inject-runtime-kmp:0.8.0")
 //            implementation("dev.gitlive:firebase-analytics:2.1.0")
-            implementation("dev.gitlive:firebase-crashlytics:2.1.0")
-            implementation("io.insert-koin:koin-android:3.5.0")
+//            implementation("dev.gitlive:firebase-crashlytics:2.1.0")
+//            implementation("io.insert-koin:koin-android:3.5.0")
 
         }
 
@@ -108,12 +106,12 @@ kotlin {
             // ✅ iOS용 Ktor 엔진
             implementation("io.ktor:ktor-client-darwin:2.3.8")
 
-            // ✅ SQLDelight iOS 드라이버
+            // ✅ SQLDelight iOS 드라이버q`
             implementation("app.cash.sqldelight:native-driver:2.1.0")
 
-            implementation("me.tatarka.inject:kotlin-inject-runtime-kmp:0.8.0")
+//            implementation("me.tatarka.inject:kotlin-inject-runtime-kmp:0.8.0")
 //            implementation("dev.gitlive:firebase-analytics:2.1.0")
-            implementation("dev.gitlive:firebase-crashlytics:2.1.0")
+//            implementation("dev.gitlive:firebase-crashlytics:2.1.0")
         }
 
         jsMain.dependencies {

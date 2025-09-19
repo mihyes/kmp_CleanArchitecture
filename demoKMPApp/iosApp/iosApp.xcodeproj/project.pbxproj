@@ -7,21 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		00585F9C2E77B5DB001F2B37 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 00585F9B2E77B5DB001F2B37 /* ComposableArchitecture */; };
+		00585F9F2E77D127001F2B37 /* shared.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 007D17F32E66E83500C31142 /* shared.framework */; };
+		00585FA02E77D128001F2B37 /* shared.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 007D17F32E66E83500C31142 /* shared.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		007D18042E67E13200C31142 /* KMPNativeCoroutinesAsync in Frameworks */ = {isa = PBXBuildFile; productRef = 007D18032E67E13200C31142 /* KMPNativeCoroutinesAsync */; };
 		007D18062E67E13200C31142 /* KMPNativeCoroutinesCombine in Frameworks */ = {isa = PBXBuildFile; productRef = 007D18052E67E13200C31142 /* KMPNativeCoroutinesCombine */; };
 		007D18082E67E13200C31142 /* KMPNativeCoroutinesCore in Frameworks */ = {isa = PBXBuildFile; productRef = 007D18072E67E13200C31142 /* KMPNativeCoroutinesCore */; };
-		007D181F2E6829B900C31142 /* shared.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 007D17F32E66E83500C31142 /* shared.framework */; };
-		007D18202E6829B900C31142 /* shared.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 007D17F32E66E83500C31142 /* shared.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		009DFDAE2E77F4F100C7942B /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 009DFDAD2E77F40000C7942B /* libsqlite3.tbd */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		007D18212E6829B900C31142 /* Embed Frameworks */ = {
+		00585FA12E77D128001F2B37 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				007D18202E6829B900C31142 /* shared.framework in Embed Frameworks */,
+				00585FA02E77D128001F2B37 /* shared.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -30,8 +32,7 @@
 
 /* Begin PBXFileReference section */
 		007D17F32E66E83500C31142 /* shared.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = shared.framework; path = ../shared/build/bin/iosSimulatorArm64/debugFramework/shared.framework; sourceTree = "<group>"; };
-		007D17FC2E67C9E500C31142 /* shared.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = shared.framework; path = ../shared/build/bin/iosArm64/debugFramework/shared.framework; sourceTree = "<group>"; };
-		007D18092E67E60600C31142 /* shared.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = shared.framework; path = ../shared/build/bin/iosSimulatorArm64/releaseFramework/shared.framework; sourceTree = "<group>"; };
+		009DFDAD2E77F40000C7942B /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		B9DA97B12DC1472C00A4DA20 /* demokmpapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = demokmpapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -66,10 +67,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				009DFDAE2E77F4F100C7942B /* libsqlite3.tbd in Frameworks */,
+				00585F9F2E77D127001F2B37 /* shared.framework in Frameworks */,
+				00585F9C2E77B5DB001F2B37 /* ComposableArchitecture in Frameworks */,
 				007D18062E67E13200C31142 /* KMPNativeCoroutinesCombine in Frameworks */,
 				007D18042E67E13200C31142 /* KMPNativeCoroutinesAsync in Frameworks */,
 				007D18082E67E13200C31142 /* KMPNativeCoroutinesCore in Frameworks */,
-				007D181F2E6829B900C31142 /* shared.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,8 +82,7 @@
 		007D17F22E66E83500C31142 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				007D18092E67E60600C31142 /* shared.framework */,
-				007D17FC2E67C9E500C31142 /* shared.framework */,
+				009DFDAD2E77F40000C7942B /* libsqlite3.tbd */,
 				007D17F32E66E83500C31142 /* shared.framework */,
 			);
 			name = Frameworks;
@@ -116,7 +118,7 @@
 				B9DA97AD2DC1472C00A4DA20 /* Sources */,
 				B9DA97AE2DC1472C00A4DA20 /* Frameworks */,
 				B9DA97AF2DC1472C00A4DA20 /* Resources */,
-				007D18212E6829B900C31142 /* Embed Frameworks */,
+				00585FA12E77D128001F2B37 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -130,6 +132,7 @@
 				007D18032E67E13200C31142 /* KMPNativeCoroutinesAsync */,
 				007D18052E67E13200C31142 /* KMPNativeCoroutinesCombine */,
 				007D18072E67E13200C31142 /* KMPNativeCoroutinesCore */,
+				00585F9B2E77B5DB001F2B37 /* ComposableArchitecture */,
 			);
 			productName = iosApp;
 			productReference = B9DA97B12DC1472C00A4DA20 /* demokmpapp.app */;
@@ -161,6 +164,7 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				007D18022E67E13200C31142 /* XCRemoteSwiftPackageReference "KMP-NativeCoroutines" */,
+				00585F9A2E77B5DB001F2B37 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = B9DA97B22DC1472C00A4DA20 /* Products */;
@@ -292,6 +296,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 6.0;
 			};
 			name = Debug;
 		};
@@ -347,6 +352,7 @@
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_VERSION = 6.0;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -374,12 +380,13 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -407,12 +414,13 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -441,6 +449,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		00585F9A2E77B5DB001F2B37 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-composable-architecture";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.22.2;
+			};
+		};
 		007D18022E67E13200C31142 /* XCRemoteSwiftPackageReference "KMP-NativeCoroutines" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/rickclephas/KMP-NativeCoroutines.git";
@@ -452,6 +468,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		00585F9B2E77B5DB001F2B37 /* ComposableArchitecture */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 00585F9A2E77B5DB001F2B37 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
+			productName = ComposableArchitecture;
+		};
 		007D18032E67E13200C31142 /* KMPNativeCoroutinesAsync */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 007D18022E67E13200C31142 /* XCRemoteSwiftPackageReference "KMP-NativeCoroutines" */;

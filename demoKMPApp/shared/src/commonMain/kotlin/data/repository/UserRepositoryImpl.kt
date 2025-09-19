@@ -84,15 +84,15 @@ class UserRepositoryImpl(
         val now = Clock.System.now().toEpochMilliseconds()
 
         val localId = generateLocalId()
-        val entiry = DataEntity(
+        val entry = DataEntity(
             id = localId,
             name = name,
             version = "2025.9.3",
             platform = platform
         )
 
-        userDao.insertUser(entiry)
-        return entiry.toDomainModel()
+        userDao.insertUser(entry)
+        return entry.toDomainModel()
     }
 
 

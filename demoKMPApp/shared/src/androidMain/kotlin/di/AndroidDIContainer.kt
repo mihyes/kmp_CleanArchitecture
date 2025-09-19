@@ -28,6 +28,7 @@ import kotlinx.coroutines.SupervisorJob
 import kotlinx.serialization.json.Json
 import presentation.UserPresenter
 
+
 class AndroidDIContainer private constructor(
     private val context: Context
 ) {
@@ -42,7 +43,6 @@ class AndroidDIContainer private constructor(
     private val database: Database by lazy {
         Database(sqlDriver)
     }
-
 
     private val userDao: UserDao by lazy {
         UserDaoImpl(database)
