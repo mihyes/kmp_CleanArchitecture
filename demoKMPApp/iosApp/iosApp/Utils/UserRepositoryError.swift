@@ -1,19 +1,11 @@
 //
-//  ActionEnum.swift
+//  UserRepositoryError.swift
 //  iosApp
 //
-//  Created by mhkim on 9/15/25.
+//  Created by mhkim on 9/22/25.
 //
 
 import Foundation
-
-enum ActionEnum: String {
-		case saveDB
-		case removeDB
-		case getDataInDB
-		case refreshDB
-}
-
 
 
 enum UserRepositoryError: LocalizedError {
@@ -38,7 +30,3 @@ enum UserRepositoryError: LocalizedError {
 				}
 		}
 }
-
-
-
-

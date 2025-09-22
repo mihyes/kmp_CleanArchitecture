@@ -10,9 +10,6 @@ import Foundation
 @preconcurrency import shared
 
 
-//typealias User = User_
-
-
 @Reducer
 struct UserFeature {
 		

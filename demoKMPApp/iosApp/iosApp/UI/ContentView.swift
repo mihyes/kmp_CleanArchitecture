@@ -9,22 +9,43 @@ import ComposableArchitecture
 struct ContentView: View {
 		let store: StoreOf<UserFeature>
 		@State var name: String = ""
+		@FocusState private var isFocused: Bool
+		
 		
     var body: some View {
 				WithViewStore(store, observe: { $0 }) { viewStore in
 						NavigationView {
 								VStack {
-										Button("Refesh Users") {
-												viewStore.send(.loadUsers)
+										HStack {
+												Button("새로고침") {
+														viewStore.send(.loadUsers)
+														isFocused = false
+												}
+												.foregroundStyle(Color.white)
+												.frame(width: 80, height: 30)
+												.background(.purple)
+												Spacer()
 										}
+										.frame(height: 50)
 										.padding()
+										
 										VStack {
 												TextField("please enter name", text: $name)
-												Button("Add Users") {
-														viewStore.send(.saveUserLocally(name))
+														.textFieldStyle(RoundedBorderTextFieldStyle())
+														.focused($isFocused)
+												HStack {
+														Button("사용자 추가") {
+																viewStore.send(.saveUserLocally(name))
+																self.name = ""
+																isFocused = false
+														}
+														.frame(width: 80, height: 30)
+														.background(.purple)
+														.foregroundStyle(Color.white)
+														Spacer()
 												}
 										}
-										
+										.frame(height: 80)
 										.padding()
 										
 										if viewStore.isLoading {
@@ -36,52 +57,25 @@ struct ContentView: View {
 														.padding()
 										} else {
 												List(viewStore.users, id: \.id) { user in
-														UserRowView(user: user)
+														UserListCell(user: user)
 												}
+												.background(Color.white.opacity(0.1))
 										}
+										
+										Spacer()
 								}
-								.navigationTitle("User")
+								.navigationTitle("DB User List")
 								.onChange(of: viewStore.users) { oldValue, newValue in
 										print("users List: \(newValue)")
 								}
+								.onAppear {
+										viewStore.send(.loadUsers)
+								}
 						}
-				}
-				.onAppear {
-//						viewModel.startObserving()
+						
 				}
     }
 }
 
-
-struct UserRowView: View {
-		let user: User_
-		
-		var body: some View {
-				VStack(alignment: .leading, spacing: 4) {
-						Text(user.name)
-								.font(.headline)
-						Text(user.platform)
-								.font(.subheadline)
-								.foregroundColor(.secondary)
-				}
-				.padding(.vertical, 4)
-		}
-}
-
-
-
-//struct EditContentView: View {
-//		let store: StoreOf<UserFeature>
-//		
-//		
-//		var body: some View {
-//				WithViewStore(store, observe: { $0 }) { viewStore in
-//						<#code#>
-//				} content: { viewStore in
-//						<#code#>
-//				}
-//
-//		}
-//}
 
 
