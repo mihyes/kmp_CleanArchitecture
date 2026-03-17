@@ -1,6 +1,8 @@
 package di
 
 import org.koin.core.module.Module
+import org.koin.dsl.module
 
-actual val PlatformModule: Module
-    get() = TODO("Not yet implemented")
+val PlatformModule: Module = module {
+    // JVM platform specific dependencies
+}

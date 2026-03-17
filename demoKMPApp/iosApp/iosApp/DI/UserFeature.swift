@@ -29,25 +29,26 @@ struct UserFeature {
 				case onAppear
 				case loadUsers
 				case loadUsersResponse(TaskResult<[User]>)
-				
+
 				case saveUserLocally(String)
 				case saveUserLocallyResponse(TaskResult<Void>)
-				
+
 				case deleteUserLocally(Int64)
 				case deleteUserLocallyResponse(TaskResult<Void>)
-				
+
 				case clearDatabase
 				case clearDatabaseResponse(TaskResult<Void>)
-				
-				
+
+				// Server actions
+				case refreshFromServer
+				case refreshFromServerResponse(TaskResult<Void>)
+
+				case saveUserToServer(String)
+				case saveUserToServerResponse(TaskResult<Void>)
+
 				case newUserNameChanged(String)
 				case newUserPlatformChanged(String)
-				
-				//				case toggleAddingUser
-				//				case startEditingUser(Int64)
-				//				case toggleEditingUser
-				//				case dismissError
-				
+
 		}
 		
 		
@@ -160,13 +161,60 @@ struct UserFeature {
 						case let .newUserNameChanged(name):
 								state.newUserName = name
 								return .none
-								
+
 						case let .newUserPlatformChanged(platform):
 								state.newUserPlatform = platform
 								return .none
-								
+
+						// MARK: - Server Actions
+						case .refreshFromServer:
+								state.isLoading = true
+								state.errorMessage = nil
+								return .run { send in
+										await send(.refreshFromServerResponse(
+												TaskResult {
+														try await userRepository.refreshUsersFromServer()
+												}
+										))
+								}
+
+						case .refreshFromServerResponse(.success):
+								state.isLoading = false
+								return .send(.loadUsers)
+
+						case .refreshFromServerResponse(.failure(let error)):
+								state.isLoading = false
+								state.errorMessage = error.localizedDescription
+								return .none
+
+						case .saveUserToServer(let name):
+								guard !name.isEmpty else {
+										state.errorMessage = "User name is required."
+										return .none
+								}
+								state.isLoading = true
+								return .run { [name = name, platform = state.newUserPlatform] send in
+										await send(.saveUserToServerResponse(
+												TaskResult {
+														try await userRepository.createUserOnServer(name: name, platform: platform)
+												}
+										))
+								}
+
+						case .saveUserToServerResponse(.success):
+								state.isLoading = false
+								state.newUserName = ""
+								state.newUserPlatform = "iOS"
+								state.isAddingUser = false
+								return .send(.refreshFromServer)
+
+						case .saveUserToServerResponse(.failure(let error)):
+								state.isLoading = false
+								state.errorMessage = error.localizedDescription
+								return .none
+
 						}
 				}
-				
+
 		}
 }

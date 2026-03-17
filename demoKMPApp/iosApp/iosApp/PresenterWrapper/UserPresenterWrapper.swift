@@ -120,8 +120,30 @@ class UserPresenterWrapper: UserPresenterWrapperProtocol, @unchecked Sendable {
 		func clearError() {
 				presenter.clearError()
 		}
-		
-		
+
+		// MARK: - Server Methods
+		func refreshUsersFromServer() async throws {
+				presenter.refreshUsers()
+				// Wait a moment for the refresh to complete
+				try await Task.sleep(nanoseconds: 500_000_000)
+		}
+
+		func createUserOnServer(name: String, platform: String) async throws {
+				try await withCheckedThrowingContinuation { (continuation: CheckedContinuation<Void, Error>) in
+						presenter.createUser(
+								name: name,
+								platform: platform,
+								onSuccess: {
+										continuation.resume()
+								},
+								onError: { errorMessage in
+										continuation.resume(throwing: NSError(domain: "UserPresenter", code: -1, userInfo: [NSLocalizedDescriptionKey: errorMessage]))
+								}
+						)
+				}
+		}
+
+
 }
 		
 		

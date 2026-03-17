@@ -15,6 +15,16 @@ class ApplicationTest {
         }
         val response = client.get("/")
         assertEquals(HttpStatusCode.OK, response.status)
-        assertEquals("Ktor: ${Greeting().greet()}", response.bodyAsText())
+        assertTrue(response.bodyAsText().contains("KMP Demo Server"))
+    }
+
+    @Test
+    fun testGetUsers() = testApplication {
+        application {
+            module()
+        }
+        val response = client.get("/users")
+        assertEquals(HttpStatusCode.OK, response.status)
+        assertTrue(response.bodyAsText().contains("Alice"))
     }
 }

@@ -17,24 +17,33 @@ struct ContentView: View {
 						NavigationView {
 								VStack {
 										HStack {
-												Button("새로고침") {
+												Button("로컬 새로고침") {
 														viewStore.send(.loadUsers)
 														isFocused = false
 												}
 												.foregroundStyle(Color.white)
-												.frame(width: 80, height: 30)
+												.frame(width: 100, height: 30)
 												.background(.purple)
+
+												Button("서버 새로고침") {
+														viewStore.send(.refreshFromServer)
+														isFocused = false
+												}
+												.foregroundStyle(Color.white)
+												.frame(width: 100, height: 30)
+												.background(.blue)
+
 												Spacer()
 										}
 										.frame(height: 50)
 										.padding()
-										
+
 										VStack {
 												TextField("please enter name", text: $name)
 														.textFieldStyle(RoundedBorderTextFieldStyle())
 														.focused($isFocused)
 												HStack {
-														Button("사용자 추가") {
+														Button("로컬 저장") {
 																viewStore.send(.saveUserLocally(name))
 																self.name = ""
 																isFocused = false
@@ -42,6 +51,16 @@ struct ContentView: View {
 														.frame(width: 80, height: 30)
 														.background(.purple)
 														.foregroundStyle(Color.white)
+
+														Button("서버 저장") {
+																viewStore.send(.saveUserToServer(name))
+																self.name = ""
+																isFocused = false
+														}
+														.frame(width: 80, height: 30)
+														.background(.blue)
+														.foregroundStyle(Color.white)
+
 														Spacer()
 												}
 										}

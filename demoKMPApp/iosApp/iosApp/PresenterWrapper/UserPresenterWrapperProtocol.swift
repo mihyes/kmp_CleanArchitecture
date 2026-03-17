@@ -22,4 +22,8 @@ protocol UserPresenterWrapperProtocol: Sendable {
 		func isLoading() async -> Bool
 		func getCurrentError() async -> String?
 		func clearError() async
+
+		// Server methods
+		func refreshUsersFromServer() async throws
+		func createUserOnServer(name: String, platform: String) async throws
 }
